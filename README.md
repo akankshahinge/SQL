@@ -74,6 +74,69 @@ VALUES
 (2,'RRR',28,'Nashik',12345678),
 (3,'MMM',28,'Nashik',12345678);
 ```
+### Update table
+```
+$ UPDATE customer SET NAME='SSSS', AGE=25 WHERE ID=1;
+```
+### Delete table
+```
+$ DELETE from customer WHERE ID=2;
+```
+### Alter Table - Add column, change column datatype, drop column
+```
+$ ALTER TABLE customer ADD service_years int;
+$ ALTER TABLE customer ALTER COLUMN service_years TYPE VARCHAR(50);
+$ ALTER TABLE customer DROP COLUMN service_years;
+```
+### Drop table
+The DROP TABLE command deletes a table in the database
+```
+$ DROP TABLE customer;
+```
+### Truncate Table
+The TRUNCATE TABLE command deletes the data inside a table, but not the table itself
+```
+$ TRUNCATE TABLE customer;
+```
+### Select
+```
+$ SELECT * from customer;
+$ SELECT name from customer;
+$ SELECT DISTINCT name from customer;   (get unique rows from name column)
+```
+### Where Clause
+```
+$ SELECT name FROM customer WHERE name='SSSS';
+$ SELECT * FROM customer WHERE name='SSSS';
+$ SELECT * FROM customer WHERE age=28 AND city='Nashik';
+```
+### Limit By clause 
+```
+$ SELECT * FROM customer
+ORDER BY name ASC
+LIMIT 2;   
+```
+### Order By clause - ASC, DESC
+```
+SELECT * FROM customer
+ORDER BY name ASC; 
+```
+### Functions in SQL
+1. System defined: round(), upper(), lower(), count(), sum(), max(), substring(), concat(), trim(), replace()
+   ```
+   $ SELECT SUBSTRING(first_name, 1, 4) from customer;
+   ```
+2. User defined: Define your own functions
+
+### Aggregate Functions
+```
+$ SELECT COUNT(name) FROM customer;
+$ SELECT COUNT(*) FROM customer;
+$ SELECT SUM(age) FROM customer;
+$ SELECT round(AVG(age),2) FROM customer;
+```
+
+
 
 
 
