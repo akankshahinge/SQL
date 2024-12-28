@@ -24,7 +24,7 @@
 - A Foreign key is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
 - A table can have any number of foreign keys, can contain duplicate and NULL values
 ## Constraints
-Constraints are used to specify rules for data in a table. This ensures the accuracy and reliability of the data in the table
+Constraints are used to specify rules for data in a table. This ensures the accuracy and reliability of the data in the table.
 Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement
 ```
 Syntax
@@ -35,3 +35,11 @@ column3 datatype constraint,
 ....
 );
 ```
+## Constraints Types
+1. NOT NULL: Ensures that a column cannot have a NULL value
+2. UNIQUE: Ensures that all values in a column are different
+3. PRIMARY KEY: A combination of a NOT NULL and UNIQUE
+4. FOREIGN KEY: Prevents actions that would destroy links between tables (used to link multiple tables together)
+5. CHECK: Ensures that the values in a column satisfies a specific condition
+6. DEFAULT: Sets a default value for a column if no value is specified
+7. CREATE INDEX: Used to create and retrieve data from the database very quickly
