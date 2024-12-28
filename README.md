@@ -43,3 +43,18 @@ column3 datatype constraint,
 5. CHECK: Ensures that the values in a column satisfies a specific condition
 6. DEFAULT: Sets a default value for a column if no value is specified
 7. CREATE INDEX: Used to create and retrieve data from the database very quickly
+
+## SQL Commands
+### Create Database
+```
+$ CREATE DATABASE testDB;
+```
+### Show Database
+```
+$ SHOW DATABASES;
+```
+### Drop Database
+```
+$ DROP DATABASE testDB;
+```
+
