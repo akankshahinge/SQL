@@ -57,4 +57,23 @@ $ SHOW DATABASES;
 ```
 $ DROP DATABASE testDB;
 ```
+### Create Table
+```
+$ CREATE TABLE customer (
+ID int8 PRIMARY KEY,
+NAME varchar(50) NOT NULL,
+AGE int NOT NULL,
+CITY char(50),
+SALARY numeric
+)
+```
+### Insert into Table
+```
+$ INSERT INTO customer (ID,NAME,AGE,CITY,SALARY)
+VALUES 
+(2,'RRR',28,'Nashik',12345678),
+(3,'MMM',28,'Nashik',12345678);
+```
+
+
 
