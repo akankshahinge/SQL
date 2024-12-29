@@ -167,6 +167,84 @@ Explanation:
 * The ORDER BY clause sorts the final result set. 
 * The LIMIT clause restricts the number of rows returned
 
+### Timestamps Function
+• SHOW TIMEZONE
+• SELECT NOW()
+• SELECT TIMEOFDAY()
+• SELECT CURRENT_TIME
+• SELECT CURRENT_DATE
+
+### Extract Function
+The EXTRACT() function extracts a part from a given date value.
+Syntax: SELECT EXTRACT(MONTH FROM date_field) FROM Table
+ • YEAR
+ • QUARTER 
+ • MONTH
+ • WEEK
+ • DAY
+ • HOUR
+ • MINUTE
+ • DOW–day of week
+ • DOY–day of year
+```
+$ SELECT EXTRACT(MONTH FROM payment_date) AS month
+FROM payment
+```
+### Joins
+Inner join (INNER JOIN), left join (LEFT JOIN), right join (RIGHT JOIN), full outer join (FULL OUTER JOIN)
+```
+ SELECT *
+ FROM customer AS c
+ INNER JOIN payment AS p
+ ON c.customer_id = p.customer_id
+```
+### Self Join
+Join table on itself
+```
+SELECT * FROM employee as T1
+JOIN employee as T2
+ON T1.empoyee_id = T2.manager_id
+```
+### Union
+The SQL UNION clause/operator is used to combine/concatenate the results 
+of two or more SELECT statements without returning any duplicate rows and 
+keeps unique records
+ To use this UNION clause, each SELECT statement must have
+ • The same number of columns selected and expressions
+ • The same data type and
+ • Have them in the same order
+```
+SELECT cust_name, cust_amount from custA
+UNION
+SELECT cust_name, cust_amount from custB
+```
+### Union All
+In UNION ALL everything is same as UNION, it combines/concatenate two or more table but keeps all records, including duplicates
+```
+SELECT cust_name, cust_amount from custA
+UNION ALL
+SELECT cust_name, cust_amount from custB
+```
+### SubQuery
+```
+SELECT *
+FROM payment
+WHERE amount > (SELECT AVG(amount) FROM payment)
+```
+```
+SELECT customer_id, amount, mode
+from payment
+where customer_id IN (SELECT customer_id FROM customer)
+```
+```
+SELECT first_name, last_name
+FROM customer c
+WHERE EXISTS (SELECT customer_id, amount
+FROM payment p
+WHERE p.customer_id = c.customer_id
+AND amount >100)
+```
+
 
 
 
