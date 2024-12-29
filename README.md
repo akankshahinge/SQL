@@ -153,19 +153,19 @@ ORDER BY total DESC
 ### Order of execution
 - In a SQL query, the order of execution is: FROM, WHERE, GROUP BY, HAVING, SELECT, DISTINCT, ORDER BY, LIMIT. 
 Explanation:
-FROM: First, the tables are specified and joined based on the JOIN clause. 
-WHERE: Next, rows are filtered based on the conditions specified in the WHERE clause. 
-GROUP BY: After filtering, rows are grouped together based on the specified columns. 
-HAVING: Groups are further filtered based on conditions using the HAVING clause. 
-SELECT: The columns to be retrieved are specified in the SELECT clause. 
-DISTINCT: If specified, only unique rows are returned. 
-ORDER BY: The result set is sorted based on the specified columns. 
-LIMIT: Finally, the number of rows to be returned is limited using the LIMIT clause. 
+1. FROM: First, the tables are specified and joined based on the JOIN clause. 
+2. WHERE: Next, rows are filtered based on the conditions specified in the WHERE clause. 
+3. GROUP BY: After filtering, rows are grouped together based on the specified columns. 
+4. HAVING: Groups are further filtered based on conditions using the HAVING clause. 
+5. SELECT: The columns to be retrieved are specified in the SELECT clause. 
+6. DISTINCT: If specified, only unique rows are returned. 
+7. ORDER BY: The result set is sorted based on the specified columns. 
+8. LIMIT: Finally, the number of rows to be returned is limited using the LIMIT clause. 
 - Key points to remember:
-The WHERE clause filters rows before grouping occurs. 
-The HAVING clause is used to filter groups created by the GROUP BY clause. 
-The ORDER BY clause sorts the final result set. 
-The LIMIT clause restricts the number of rows returned
+* The WHERE clause filters rows before grouping occurs. 
+* The HAVING clause is used to filter groups created by the GROUP BY clause. 
+* The ORDER BY clause sorts the final result set. 
+* The LIMIT clause restricts the number of rows returned
 
 
 
