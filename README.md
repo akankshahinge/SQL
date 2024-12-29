@@ -135,6 +135,37 @@ $ SELECT COUNT(*) FROM customer;
 $ SELECT SUM(age) FROM customer;
 $ SELECT round(AVG(age),2) FROM customer;
 ```
+### Group By, Order By, Having clause
+The WHERE clause places conditions on the selected columns, whereas the HAVING 
+clause places conditions on groups created by the GROUP BY clause
+```
+$ SELECT customer_id, SUM(amount) AS total
+from payment
+GROUP BY payment_mode
+ORDER BY total ASC
+
+$ SELECT payment_mode, COUNT(amount) AS total
+from payment
+GROUP BY payment_mode
+HAVING COUNT(amount)>=3
+ORDER BY total DESC
+```
+### Order of execution
+- In a SQL query, the order of execution is: FROM, WHERE, GROUP BY, HAVING, SELECT, DISTINCT, ORDER BY, LIMIT. 
+Explanation:
+FROM: First, the tables are specified and joined based on the JOIN clause. 
+WHERE: Next, rows are filtered based on the conditions specified in the WHERE clause. 
+GROUP BY: After filtering, rows are grouped together based on the specified columns. 
+HAVING: Groups are further filtered based on conditions using the HAVING clause. 
+SELECT: The columns to be retrieved are specified in the SELECT clause. 
+DISTINCT: If specified, only unique rows are returned. 
+ORDER BY: The result set is sorted based on the specified columns. 
+LIMIT: Finally, the number of rows to be returned is limited using the LIMIT clause. 
+- Key points to remember:
+The WHERE clause filters rows before grouping occurs. 
+The HAVING clause is used to filter groups created by the GROUP BY clause. 
+The ORDER BY clause sorts the final result set. 
+The LIMIT clause restricts the number of rows returned
 
 
 
