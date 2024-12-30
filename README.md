@@ -333,6 +333,27 @@ SELECT new_id,
   ```
 Multiple CTEs can also be defined by just comma
 
+### LIKE Operator
+```
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'A%';
+```
+### NOT LIKE Operator
+```
+SELECT * FROM Customers
+WHERE CustomerName NOT LIKE 'A%';
+```
+### NOT IN
+```
+SELECT * FROM Customers
+WHERE City NOT IN ('Paris', 'London');
+```
+### NOT BETWEEN
+```
+SELECT * FROM Customers
+WHERE CustomerID NOT BETWEEN 10 AND 60;
+```
+
 
 
 
