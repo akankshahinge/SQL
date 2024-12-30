@@ -244,6 +244,95 @@ FROM payment p
 WHERE p.customer_id = c.customer_id
 AND amount >100)
 ```
+### Case Statement Syntax
+```
+SELECT customer_id, amount,
+ CASE
+ WHEN amount > 100 THEN 'Expensive product'
+ WHEN amount = 100 THEN 'Moderate product'
+ ELSE 'Inexpensive product' 
+END AS ProductStatus
+FROM payment
+```
+### Case Expression syntax
+```
+SELECT customer_id,
+CASE amount
+ WHEN 500 THEN 'Prime Customer'
+ WHEN 100 THEN 'Plus Customer'
+ ELSE 'Regular Customer'
+END AS CustomerStatus
+FROM payment
+```
+### Windows Function
+- Window functions applies aggregate, ranking and analytic functions over a particular window (set of rows).
+- And OVER clause is used with window functions to define that window
+1. Aggregate: SUM, AVG, MIN, MAX, COUNT
+2. Ranking: ROW_NUMBER, RANK, DENSE_RANK, PERCENT_RANK
+3. Value/Analytics: LEAD, LAG, FIRST_VALUE, LAST_VALUE
+
+```
+SELECT new_id, new_cat,
+ SUM(new_id)  OVER( PARTITION BY new_cat ORDER BY new_id) AS "Total",
+ AVG(new_id)  OVER( PARTITION BY new_cat ORDER BY new_id) AS "Average",
+ COUNT(new_id)  OVER( PARTITION BY new_cat ORDER BY new_id) AS "Count",
+ MIN(new_id)  OVER( PARTITION BY new_cat ORDER BY new_id) AS "Min",
+ MAX(new_id)  OVER( PARTITION BY new_cat ORDER BY new_id) AS "Max"
+FROM test_data
+```
+```
+SELECTnew_id, new_cat,
+ SUM(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Total",
+ AVG(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Average",
+ COUNT(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Count",
+ MIN(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Min",
+ MAX(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Max"
+ FROM test_data
+```
+NOTE: Above we have used: “ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING” 
+which will give a SINGLE output based on all INPUT Values/PARTITION (if used)
+```
+SELECT new_id, 
+ROW_NUMBER() OVER(ORDER BY new_id) AS "ROW_NUMBER",
+RANK() OVER(ORDER BY new_id) AS "RANK",
+DENSE_RANK()OVER(ORDER BY new_id) AS "DENSE_RANK",
+PERCENT_RANK() OVER(ORDER BY new_id) AS "PERCENT_RANK"
+FROM test_data
+```
+```
+SELECT new_id,
+ FIRST_VALUE(new_id)  OVER( ORDER BY new_id) AS "FIRST_VALUE",
+ LAST_VALUE(new_id)  OVER( ORDER BY new_id) AS "LAST_VALUE",  
+ LEAD(new_id)  OVER( ORDER BY new_id) AS "LEAD",
+ LAG(new_id)  OVER( ORDER BY new_id) AS "LAG"
+ FROM test_data
+```
+To lead and lag by 2 values
+```
+SELECT new_id,
+ LEAD(new_id, 2)  OVER( ORDER BY new_id) AS "LEAD_by2",
+ LAG(new_id, 2)  OVER( ORDER BY new_id) AS "LAG_by2"
+ FROM test_data
+```
+### Common Table Expression
+- A common table expression, or CTE, is a temporary named result set created from a simple SELECT statement that can be used in a subsequent SELECT statement
+- We can define CTEs by adding a WITH clause directly before SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
+- The WITH clause can include one or more CTEs separated by commas
+  ```
+   WITH my_cteAS (
+   SELECT  *, AVG(amount) OVER(ORDER BY 
+   p.customer_id) AS "Average_Price", 
+   COUNT(address_id) OVER(ORDER BY 
+   c.customer_id) AS "Count"
+    FROM payment as p
+    INNER JOIN customer AS c
+    ON p.customer_id= c.customer_id
+    )
+    SELECT first_name, last_name
+    FROM my_cte
+  ```
+Multiple CTEs can also be defined by just comma
+
 
 
 
