@@ -405,6 +405,12 @@ TOP can also be used with percent
 ```
 SELECT TOP 50 PERCENT * FROM Customers;
 ```
+### Concatenate Columns
+In MySQL
+```
+$ SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+```
 
 
 
