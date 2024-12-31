@@ -23,6 +23,7 @@
 ## Foreign Key
 - A Foreign key is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
 - A table can have any number of foreign keys, can contain duplicate and NULL values
+  
 ## Constraints
 Constraints are used to specify rules for data in a table. This ensures the accuracy and reliability of the data in the table.
 Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement
@@ -177,15 +178,15 @@ Explanation:
 ### Extract Function
 The EXTRACT() function extracts a part from a given date value.
 Syntax: SELECT EXTRACT(MONTH FROM date_field) FROM Table
- • YEAR
- • QUARTER 
- • MONTH
- • WEEK
- • DAY
- • HOUR
- • MINUTE
- • DOW–day of week
- • DOY–day of year
+ - YEAR
+ - QUARTER 
+ - MONTH
+ - WEEK
+ - DAY
+ - HOUR
+ - MINUTE
+ - DOW–day of week
+ - DOY–day of year
 ```
 $ SELECT EXTRACT(MONTH FROM payment_date) AS month
 FROM payment
