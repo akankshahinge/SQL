@@ -343,6 +343,28 @@ WHERE CustomerName LIKE 'A%';
 SELECT * FROM Customers
 WHERE CustomerName NOT LIKE 'A%';
 ```
+### LIKE and Wildcard
+There are two wildcards often used in conjunction with the LIKE operator:
+- The percent sign % represents zero, one, or multiple characters
+- The underscore sign _ represents one, single character
+  ```
+  $ SELECT * FROM Customers
+  WHERE CustomerName LIKE 'a%';
+  ```
+  ```
+  $ SELECT * FROM Customers
+  WHERE city LIKE 'L_nd__';
+  ```
+  ```
+  $ SELECT * FROM Customers
+  WHERE CustomerName LIKE 'a__%';
+  ```
+  The [] wildcard returns a result if any of the characters inside gets a match.
+  Return all customers starting with either "b", "s", or "p":
+  ```
+  $ SELECT * FROM Customers
+  WHERE CustomerName LIKE '[bsp]%';
+  ```
 ### NOT IN
 ```
 SELECT * FROM Customers
@@ -352,6 +374,31 @@ WHERE City NOT IN ('Paris', 'London');
 ```
 SELECT * FROM Customers
 WHERE CustomerID NOT BETWEEN 10 AND 60;
+```
+### IS NULL and IS NOT NULL
+```
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+```
+```
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL;
+```
+### TOP and LIMIT
+TOP used by Microsoft SQL server
+LIMIT used vy My SQL, PostgreSQL
+```
+SELECT TOP 5 * FROM customer;
+```
+```
+SELECT * FROM customer
+LIMIT 5;
+```
+TOP can also be used with percent
+```
+SELECT TOP 50 PERCENT * FROM Customers;
 ```
 
 
