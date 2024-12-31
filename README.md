@@ -365,6 +365,11 @@ There are two wildcards often used in conjunction with the LIKE operator:
   $ SELECT * FROM Customers
   WHERE CustomerName LIKE '[bsp]%';
   ```
+  The - wildcard allows you to specify a range of characters inside the [] wildcard.
+  ```
+  $ SELECT * FROM Customers
+  WHERE CustomerName LIKE '[a-f]%';
+  ```
 ### NOT IN
 ```
 SELECT * FROM Customers
