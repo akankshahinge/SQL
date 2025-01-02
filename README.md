@@ -412,6 +412,55 @@ In MySQL
 $ SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
 FROM Customers;
 ```
+### Exists
+- The EXISTS operator is used to test for the existence of any record in a subquery.
+- The EXISTS operator returns TRUE if the subquery returns one or more records.
+  ```
+  SELECT SupplierName
+  FROM Suppliers
+  WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+  ```
+### ANY and ALL
+The ANY operator:
+- returns a boolean value as a result
+- returns TRUE if ANY of the subquery values meet the condition
+ANY means that the condition will be true if the operation is true for any of the values in the range.
+```
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);
+```
+```
+SELECT ProductName
+FROM Products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);
+```
+### SELECT INTO
+The SELECT INTO statement copies data from one table into a new table.
+```
+SELECT * INTO CustomersGermany
+FROM Customers
+WHERE Country = 'Germany';
+```
+Tip: SELECT INTO can also be used to create a new, empty table using the schema of another. Just add a WHERE clause that causes the query to return no data:
+```
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+```
+### INSERT INTO SELECT
+- The INSERT INTO SELECT statement copies data from one table and inserts it into another table.
+- The INSERT INTO SELECT statement requires that the data types in source and target tables match
+```
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
+```
 
 
 
