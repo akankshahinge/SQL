@@ -3,6 +3,12 @@
 - SQL is Structured Query Language, is a programming language to interact with databases.
 - SQL applications: CRUD
 
+### Comments
+```
+-- Single line comment
+/* */ Multi line comment
+```
+
 ## SQL Commands
 1. DDL (Data Definition Language): create, alter, drop
 2. DML (Data Manipulation Language): select, insert, update and delete
@@ -460,6 +466,37 @@ WHERE 1 = 0;
 ```
 INSERT INTO Customers (CustomerName, City, Country)
 SELECT SupplierName, City, Country FROM Suppliers;
+```
+### CASE
+```
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+```
+### IFNULL
+The MySQL IFNULL() function lets you return an alternative value if an expression is NULL:
+```
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products;
+```
+### Procedures
+```
+mysql> delimiter //
+
+mysql> CREATE PROCEDURE citycount (IN country CHAR(3), OUT cities INT)
+       BEGIN
+         SELECT COUNT(*) INTO cities FROM world.city
+         WHERE CountryCode = country;
+       END//
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+
+mysql> CALL citycount('JPN', @cities);
 ```
 
 
