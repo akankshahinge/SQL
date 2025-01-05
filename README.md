@@ -503,6 +503,42 @@ mysql> CALL citycount('JPN', @cities);
    ```
    select DISTINCT CITY from STATION where MOD(ID,2)=0;
    ```
+2. Substraction
+   ```
+   select (count(CITY) - count(DISTINCT CITY)) from STATION;
+   ```
+3. Names staring with aeiou
+   ```
+   SELECT DISTINCT CITY FROM STATION WHERE CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' OR CITY LIKE 'U%
+   ```
+4. Regular Expression
+   - ^ - starts with
+   - $ ends with
+   Select name which starts and ends with vowel
+   ```
+   SELECT DISTINCT CITY
+   FROM STATION
+   WHERE CITY REGEXP '^[aeiouAEIOU].*[aeiouAEIOU]$';
+   ```
+6. Select names where names does not start with vowels
+   ```
+   select DISTINCT CITY from STATION where CITY NOT REGEXP '^[aeiou].*$';
+   ```
+7. select names that dont end with vowel
+   ```
+   select DISTINCT city from STATION where NOT city REGEXP '[aeiou]$';
+   ```
+   OR
+   ```
+   SELECT DISTINCT CITY
+   FROM STATION
+   WHERE LOWER(RIGHT(CITY, 1)) NOT IN ('a', 'e', 'i', 'o', 'u');
+   ```
+   Here RIGHT(CITY, 1) is used to extract one character from CITY name and LOWER will convert it to lowercase
+8. Query the list of CITY names from STATION that do not start with vowels and do not end with vowels. Your result cannot contain duplicates.
+   ```
+   select DISTINCT city FROM station where city NOT REGEXP '^[aeiou]' and city NOT REGEXP '[aeiou]$'
+   ```
 
 
 
