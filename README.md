@@ -498,6 +498,11 @@ mysql> delimiter ;
 
 mysql> CALL citycount('JPN', @cities);
 ```
+### Tricky MySQL queries
+1. Get records for even ID (Use MOD fucntion)
+   ```
+   select DISTINCT CITY from STATION where MOD(ID,2)=0;
+   ```
 
 
 
