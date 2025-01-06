@@ -539,6 +539,25 @@ mysql> CALL citycount('JPN', @cities);
    ```
    select DISTINCT city FROM station where city NOT REGEXP '^[aeiou]' and city NOT REGEXP '[aeiou]$'
    ```
+9. Query the Name of any student in STUDENTS who scored higher than  Marks. Order your output by the last three characters of each name. If two or more students both have names ending in the same last three   
+   characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+   - Tip: To extract the last three characters RIGHT(Name, 3)
+   - Tip: To extract middle characters MID(Name, start_position, length)
+   ```
+   SELECT 
+    Name
+   FROM 
+      STUDENTS
+   WHERE 
+      Marks > 75
+   ORDER BY 
+      RIGHT(Name, 3), 
+      ID;
+   ```
+   10. Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . Truncate your answer to  decimal places.
+       ```
+       select round(MAX(LAT_N),4) from STATION where LAT_N < 137.2345;
+       ```
 
 
 
