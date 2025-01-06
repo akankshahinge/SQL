@@ -554,7 +554,7 @@ mysql> CALL citycount('JPN', @cities);
       RIGHT(Name, 3), 
       ID;
    ```
-   10. Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . Truncate your answer to  decimal places.
+10. Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . Truncate your answer to  decimal places.
        ```
        select round(MAX(LAT_N),4) from STATION where LAT_N < 137.2345;
        ```
