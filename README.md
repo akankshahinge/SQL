@@ -558,6 +558,24 @@ mysql> CALL citycount('JPN', @cities);
        ```
        select round(MAX(LAT_N),4) from STATION where LAT_N < 137.2345;
        ```
+11. Example of Replace and cast and CTE
+    ```
+    WITH AdjustedSalaries AS (
+    SELECT 
+        SALARY, 
+        CAST(REPLACE(CAST(SALARY AS CHAR), '0', '') AS UNSIGNED) AS AdjustedSalary
+    FROM EMPLOYEES
+    ),
+    ActualAverage AS (
+        SELECT AVG(SALARY) AS ActualAvg FROM EMPLOYEES
+    ),
+    AdjustedAverage AS (
+        SELECT AVG(AdjustedSalary) AS AdjustedAvg FROM AdjustedSalaries
+    )
+    SELECT 
+        CEIL(ABS(ActualAverage.ActualAvg - AdjustedAverage.AdjustedAvg)) AS ErrorAmount
+    FROM ActualAverage, AdjustedAverage;
+    ```
 
 
 
