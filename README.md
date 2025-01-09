@@ -239,7 +239,9 @@ UNION ALL
 SELECT cust_name, cust_amount from custB
 ```
 ### SubQuery
-It is like nested query or inner query. we make use of opeartor like IN or EXISTS
+- It is like nested query or inner query. we make use of opeartor like IN or EXISTS
+- Subquery can be use with these clause: select, from, where, having
+
 ```
 SELECT *
 FROM payment
