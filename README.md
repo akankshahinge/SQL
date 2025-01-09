@@ -2,6 +2,8 @@
 
 - SQL is Structured Query Language, is a programming language to interact with databases.
 - SQL applications: CRUD
+- SQL is case insensitive
+- Suppose your column name is MAX(age) and you want to select this for AVG. Then it gives error as it considers two aggregation function one inside other - AVG(MAX(age)) so we use backtick to get the results.      Eg: select AVG(`MAX(age))`)
 
 ### Comments
 ```
