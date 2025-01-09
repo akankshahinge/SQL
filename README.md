@@ -239,6 +239,7 @@ UNION ALL
 SELECT cust_name, cust_amount from custB
 ```
 ### SubQuery
+It is like nested query or inner query. we make use of opeartor like IN or EXISTS
 ```
 SELECT *
 FROM payment
