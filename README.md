@@ -334,8 +334,10 @@ SELECT new_id,
 - A common table expression, or CTE, is a temporary named result set created from a simple SELECT statement that can be used in a subsequent SELECT statement
 - We can define CTEs by adding a WITH clause directly before SELECT, INSERT, UPDATE, DELETE, or MERGE statement.
 - The WITH clause can include one or more CTEs separated by commas
+- These results is not stored in the memory, and each time the query is ran it generates temporay results. Once cte is created immediately the select should be written o query it immediately as result as tempory 
+  and not stored in memory.
   ```
-   WITH my_cteAS (
+   WITH my_cte AS (
    SELECT  *, AVG(amount) OVER(ORDER BY 
    p.customer_id) AS "Average_Price", 
    COUNT(address_id) OVER(ORDER BY 
@@ -348,6 +350,33 @@ SELECT new_id,
     FROM my_cte
   ```
 Multiple CTEs can also be defined by just comma
+##### Difference between CTE and SubQuery
+- In subquery, we first write main query and then subquery and in CTE, we first wite the CTE and then main query. Thinking pattern is, for subquery - bottom to top and for CTE - its top to bottom.
+- Big difference, subquery can be only used once in main query, where as CTE can be used multiple times in main query.
+- CTE reduces redandant and increase readability, introduces modularity, reuseability
+*Types of CTE*
+1. Non-Recursive CTE - standlone, and nested CTE (one CTE inside other)
+   ```
+   Example of nested CTE
+   with cte1 as
+   (
+   select ....
+   from ....
+   where ....
+   ),
+   cte2 as
+   (
+   select ....
+   from cte1
+   where ....
+   )
+   select ....
+   from cte2
+   where ....
+   ```
+3. Recursive CTE
+
+##### Tip: order by cannot be used in subquerys, views, CTE, inline functions. So use order by in main query.
 
 ### LIKE Operator
 ```
