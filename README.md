@@ -297,7 +297,7 @@ SELECT new_id, new_cat,
 FROM test_data
 ```
 ```
-SELECTnew_id, new_cat,
+SELECT new_id, new_cat,
  SUM(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Total",
  AVG(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Average",
  COUNT(new_id)  OVER( ORDER BY new_id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)  AS "Count",
@@ -354,7 +354,7 @@ Multiple CTEs can also be defined by just comma
 - In subquery, we first write main query and then subquery and in CTE, we first wite the CTE and then main query. Thinking pattern is, for subquery - bottom to top and for CTE - its top to bottom.
 - Big difference, subquery can be only used once in main query, where as CTE can be used multiple times in main query.
 - CTE reduces redandant and increase readability, introduces modularity, reuseability
-*Types of CTE*
+##### *Types of CTE*
 1. Non-Recursive CTE - standlone, and nested CTE (one CTE inside other)
    ```
    Example of nested CTE
