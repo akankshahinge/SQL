@@ -374,7 +374,7 @@ Multiple CTEs can also be defined by just comma
    from cte2
    where ....
    ```
-3. Recursive CTE
+3. Recursive CTE - like generating 1 to 10 numbers. That is like calling a cte from another cte recursively until the condition breaks.
 
 ##### Tip: order by cannot be used in subquerys, views, CTE, inline functions. So use order by in main query.
 
