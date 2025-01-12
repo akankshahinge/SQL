@@ -618,29 +618,29 @@ mysql> CALL citycount('JPN', @cities);
     ### Views
     - Is a virtual table that shows data without storing it physically. It is like object. It is temporary. There can be multiple views for different structure like - view for data analyst, view for end users          and so on.
     - Virtual table based on result set of a query, without storing data in the database.
-   ###### *Difference between tables and views*
-   - Views: No persistance, easy to maintain, slow response, read
-   - Tables: Persistant data, hard to maintain, fast response, read/write
-   ###### *Difference between CTE and views*
-   - Views: reduce redandancy in multi queries (we can create one view and then query it multiple times), improve resuability in multi-queries, persisted logic, need to maintain (create,drop)
-   - CTE: reduce redandancy in one query, improves resuablity in one query, temporary logic on the fly, no maintenance-auto cleanup
-   ```
-   CREATE OR REPLACE VIEW [Brazil Customers] AS
-   SELECT CustomerName, ContactName, City
-   FROM Customers
-   WHERE Country = 'Brazil';
-   ```
-   ```
-   DROP VIEW view_name;
-   ```
-  ###### *Usecase of Views*
-  - Views can be used to provide abstraction of actual tables to user. If we have complex table structure then we can create a simple view and provide to user for there use.
-  - To hide sensitive data
-  - Views can also be used to create tables in different languages, for eg: view in Germany, view in Hindi
-  - Suppose if we want to modify our original table and multiple users are working on that table, they can get afftected by the changes so we can create view and give this view to them and simulatenously we can 
-    work on the original table.
-  - Views can be used to craete datamart
-     
+     ###### *Difference between tables and views*
+     - Views: No persistance, easy to maintain, slow response, read
+     - Tables: Persistant data, hard to maintain, fast response, read/write
+     ###### *Difference between CTE and views*
+     - Views: reduce redandancy in multi queries (we can create one view and then query it multiple times), improve resuability in multi-queries, persisted logic, need to maintain (create,drop)
+     - CTE: reduce redandancy in one query, improves resuablity in one query, temporary logic on the fly, no maintenance-auto cleanup
+     ```
+     CREATE OR REPLACE VIEW [Brazil Customers] AS
+     SELECT CustomerName, ContactName, City
+     FROM Customers
+     WHERE Country = 'Brazil';
+     ```
+     ```
+     DROP VIEW view_name;
+     ```
+    ###### *Usecase of Views*
+    - Views can be used to provide abstraction of actual tables to user. If we have complex table structure then we can create a simple view and provide to user for there use.
+    - To hide sensitive data
+    - Views can also be used to create tables in different languages, for eg: view in Germany, view in Hindi
+    - Suppose if we want to modify our original table and multiple users are working on that table, they can get afftected by the changes so we can create view and give this view to them and simulatenously we          can 
+      work on the original table.
+    - Views can be used to craete datamart
+       
 
 
 
